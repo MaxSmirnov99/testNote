@@ -10,7 +10,7 @@ part 'user_model.g.dart';
 class UserModel with _$UserModel {
   const UserModel._();
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory UserModel.signedIn({
+  const factory UserModel.signedInFirebaseUser({
     required String? displayName,
     required String? email,
     String? avatarUrl,
@@ -23,7 +23,7 @@ class UserModel with _$UserModel {
   const factory UserModel.guest() = GuestUserModel;
 
   factory UserModel.fromFirebaseUser(fb.User user) {
-    return UserModel.signedIn(
+    return UserModel.signedInFirebaseUser(
         displayName: user.displayName,
         email: user.email,
         avatarUrl: user.photoURL);

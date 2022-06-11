@@ -6,7 +6,7 @@ class FakeAuth extends Auth {
 
   @override
   Future<UserModel> signIn() async {
-    _currentUser = const UserModel.signedIn(
+    _currentUser = const UserModel.signedInFirebaseUser(
         displayName: 'tbm98', email: 'tbm98.dev@gmail.com');
     return _currentUser;
   }

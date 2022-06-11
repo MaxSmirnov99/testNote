@@ -33,31 +33,10 @@ class FirestoreStorage extends Storage {
     }
   }
 
-  @override
-  Future<List<NoteModel>> getAllNote() async {
-    final querySnapshot =
-        await collection.orderBy('time', descending: true).get();
-    return querySnapshot.docs
-        .map((e) => NoteModel.fromJson(e.data()).copyWith(fbDocsId: e.id))
-        .toList();
-  }
 
-  @visibleForTesting
-  List<NoteModel> mapQuerySnapshotToListNode(
-    QuerySnapshot<Map<String, dynamic>> snapshot,
-  ) {
-    return snapshot.docs
-        .map((e) => NoteModel.fromJson(e.data()).copyWith(fbDocsId: e.id))
-        .toList();
-  }
 
-  @override
-  Stream<List<NoteModel>> allNoteStream() {
-    return collection
-        .orderBy('time', descending: true)
-        .snapshots()
-        .map(mapQuerySnapshotToListNode);
-  }
+
+
 
   @override
   Future<bool> updateNote(NoteModel noteModel) async {
@@ -80,5 +59,17 @@ class FirestoreStorage extends Storage {
     } catch (_) {
       return false;
     }
+  }
+
+  @override
+  Stream<List<NoteModel>> allNoteStream() {
+    // TODO: implement allNoteStream
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<NoteModel>> getAllNote() {
+    // TODO: implement getAllNote
+    throw UnimplementedError();
   }
 }

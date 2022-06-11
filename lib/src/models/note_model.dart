@@ -41,6 +41,6 @@ class NoteModel with _$NoteModel {
     return DateTime.fromMillisecondsSinceEpoch(time!);
   }
 
-  factory NoteModel.fromJson(Map<String, dynamic> json) =>
+  factory NoteModel.fromDb(Map<String, dynamic> json) =>
       _$NoteModelFromJson(json);
 }

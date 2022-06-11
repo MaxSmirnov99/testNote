@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notes/src/ui/screens/trash/trash_page.dart';
 import 'package:notes/src/ui/widgets/compose_button.dart';
 import 'package:notes/src/ui/widgets/avatar_widget.dart';
 import 'package:notes/src/ui/widgets/bottom_navi_bar_widget.dart';
@@ -18,7 +17,7 @@ class SignedInPage extends StatelessWidget {
           leading: IconButton(
             icon: const Icon(CupertinoIcons.trash),
             onPressed: () {
-              Navigator.push(context, SlideUpRoute(child: const TrashPage()));
+
             },
           ),
           actions: const [

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:notes/src/config/global_constant.dart';
 import 'package:notes/src/models/user_model.dart';
-import 'package:notes/src/ui/dialogs/profile.dart';
 import 'package:notes/src/ui/screens/home/providers/profile_providers.dart';
 
 class AvatarWidget extends ConsumerWidget {
@@ -17,15 +16,15 @@ class AvatarWidget extends ConsumerWidget {
     final user = ref.watch(profileProvider);
 
     return user.map(
-      signedIn: (value) => SignedInAvatar(user: value),
+      signedIn: (value) => SignedIn(user: value),
       guest: (_) => const GuestAvatar(),
     );
   }
 }
 
 @visibleForTesting
-class SignedInAvatar extends ConsumerWidget {
-  const SignedInAvatar({
+class SignedIn extends ConsumerWidget {
+  const SignedIn({
     Key? key,
     required this.user,
   }) : super(key: key);
@@ -36,7 +35,7 @@ class SignedInAvatar extends ConsumerWidget {
     return Center(
       child: InkWell(
         onTap: () {
-          showProfileDialog(context);
+
         },
         child: user.avatarUrl == null
             ? const IgnorePointer(child: GuestAvatar())
